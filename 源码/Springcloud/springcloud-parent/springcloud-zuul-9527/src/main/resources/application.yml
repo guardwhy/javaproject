@@ -1,0 +1,33 @@
+server:
+  port: 9527
+  
+#spring的相关配置
+spring:
+  application:
+    name: springcloud-zuul
+
+#Eureka的信息，服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: zuul9527.com
+    prefer-ip-address: true
+
+#info 配置
+info:
+  app.name: guardwhy-springcloud
+  company.name: www.guardwhy.cn
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
+
+## zuul配置
+zuul:
+  routes:
+    mydept.serviceId: springcloud-provider-dept
+    mydept.path: /mydept/**
+  ignored-services: "*" # 不能使用这个路径访问，ignored: 忽略，隐藏全部的
+  prefix: /guardwhy
+
+

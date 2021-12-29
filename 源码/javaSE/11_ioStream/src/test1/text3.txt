@@ -1,0 +1,3 @@
+abab
+我是java程序员, I love java
+我爱java

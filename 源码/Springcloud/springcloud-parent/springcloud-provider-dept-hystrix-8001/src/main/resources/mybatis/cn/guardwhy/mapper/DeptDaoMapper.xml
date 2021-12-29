@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+实体类的映射文件: namespace 指定接口的类全名
+-->
+<mapper namespace="cn.guardwhy.springcloud.dao.DeptDao">
+    <!--1.添加一个部门-->
+    <insert id="addDept" parameterType="Dept">
+        insert into dept(dname,db_source) values (#{dname}, DATABASE())
+    </insert>
+
+    <!--2.根据id查询部门-->
+    <select id="queryById" resultType="Dept" parameterType="Long">
+        select deptno,dname,db_source from dept where deptno = #{deptno};
+    </select>
+
+    <!--3.查询所有部门-->
+    <select id="queryAll" resultType="Dept">
+        select * from dept;
+    </select>
+</mapper>

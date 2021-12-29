@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 实体类的映射文件namespace 指定接口的类全名 -->
+<mapper namespace="cn.guardwhy.dao.UserMapper">
+
+    <!--批量添加用户-->
+    <insert id="addUsers" parameterType="list">
+        insert into user values
+        <!--
+        collection:两个取值：list 表示集合 array 表示数组
+        item:集合中每个变量名字
+        separator:每次遍历后添加分隔符
+        -->
+        <foreach collection="list" item="user" separator=",">
+            (null,#{user.username},#{user.birthday}, #{user.sex}, #{user.address})
+        </foreach>
+    </insert>
+
+
+    <!--2.分页操作-->
+    <select id="getUserByLimit" parameterType="map" resultType="user">
+        select * from user limit #{startIndex},#{pageSize}
+    </select>
+
+    <!--3.分页操作-->
+    <select id="getUserByRowBounds" resultType="user">
+        select * from user
+    </select>
+</mapper>

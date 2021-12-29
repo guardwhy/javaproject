@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.guardwhy.dao.UserDao">
+    <!--结果集映射-->
+    <resultMap id="userMap" type="user">
+        <id property="id" column="id"/>
+        <result property="username" column="user_name"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+    </resultMap>
+    <!-- 1.查询表中所有的用户-->
+    <select id="findAllUsers" resultMap="userMap" parameterType="int">
+        select * from user
+    </select>
+</mapper>

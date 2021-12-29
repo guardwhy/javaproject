@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试案例</title>
+</head>
+<body>
+
+  <!--/*@thymesVar id="msg" type=""*/-->
+
+  <!--所有的html元素都可以被thymeleaf替换接管; th:元素名-->
+  <div th:text="${message}"></div>
+  <!--不转义-->
+  <div th:utext="${message}"></div>
+
+  <hr/>
+
+    <!--遍历数据-->
+    <h4 th:each="lists:${lists}" th:text="${lists}"></h4>
+</body>
+</html>

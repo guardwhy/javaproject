@@ -1,0 +1,13 @@
+======Teacher======
+name=curry
+age=10
+hobby=打篮球,搞笑话
+salary=100.0
+======Pig======
+name=佩奇
+onwer=sh
+weight=200.0
+======Dog======
+name=哮天犬
+age=12
+color=黑色

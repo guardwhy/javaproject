@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 实体类接口的类全名 -->
+<mapper namespace="cn.guardwhy.dao.UserMapper">
+    <!--1.1创建User的映射-->
+    <resultMap id="userMap" type="user">
+        <!--映射主键-->
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+    </resultMap>
+
+    <!--1.2创建UserInfo的映射-->
+    <resultMap id="userInfoMap" type="userInfo">
+            <!--映射主键-->
+        <id property="id" column="id"/>
+        <result property="height" column="height"/>
+        <result property="weight" column="weight"/>
+        <result property="married" column="married"/>
+    </resultMap>
+
+    <!--1.3创建一对一的关联extends-->
+    <resultMap id="userAndInfoMap" type="user" extends="userMap">
+        <!--一对一关联-->
+        <association property="userInfo" resultMap="userInfoMap"/>
+    </resultMap>
+    
+    <!--1.4使用上面的一对一的映射-->
+    <select id="findUserAndInfo" resultMap="userAndInfoMap" parameterType="int">
+        select * from user u inner join user_info i on u.id = i.id where u.id = #{id}
+    </select>
+</mapper>

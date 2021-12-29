@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+实体类的映射文件: namespace 指定接口的类全名
+-->
+<mapper namespace="cn.guardwhy.dao.UserMapper">
+    <select id="selectLike" resultType="cn.guardwhy.domain.User">
+        SELECT * FROM user WHERE name LIKE CONCAT('%',#{username},'%') ORDER BY search_count DESC LIMIT 0,4
+    </select>
+</mapper>
